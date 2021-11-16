@@ -1,5 +1,5 @@
 
-
+Render.ClearItems(3451)
 local POS_TEXT = Render.AddText(3451, "", Vector2D(math.floor(Render.GetViewportSize().X * 0.5), math.floor(Render.GetViewportSize().Y * 0.95)), 0, 12, Color.WHITE, 0, true, true, false, Vector2D(), Color.WHITE, false,  Color.WHITE)
 
 
