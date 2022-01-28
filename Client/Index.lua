@@ -1,9 +1,11 @@
 
-Render.ClearItems(3451)
-local POS_TEXT = Render.AddText(3451, "", Vector2D(math.floor(Render.GetViewportSize().X * 0.5), math.floor(Render.GetViewportSize().Y * 0.95)), 0, 12, Color.WHITE, 0, true, true, false, Vector2D(), Color.WHITE, false,  Color.WHITE)
-
-
-Client.Subscribe("Tick", function(ds)
+local canvas = Canvas(
+    true,
+    Color(0, 0, 0, 0),
+    0,
+    true
+)
+canvas:Subscribe("Update", function(self, width, height)
     local ply = Client.GetLocalPlayer()
     if ply then
         local char = ply:GetControlledCharacter()
@@ -11,7 +13,7 @@ Client.Subscribe("Tick", function(ds)
             local loc = char:GetLocation()
             local rot = char:GetRotation()
 
-            Render.UpdateItemText(3451, POS_TEXT, tostring(loc) .. ", YAW : " .. tostring(rot.Yaw))
+            self:DrawText(tostring(loc) .. ", YAW : " .. tostring(rot.Yaw), Vector2D(math.floor(Client.GetViewportSize().X * 0.5), math.floor(Client.GetViewportSize().Y * 0.95)), 0, 12, Color.WHITE, 0, true, true, Color(0, 0, 0, 0), Vector2D(), false, Color.WHITE)
         end
     end
 end)
